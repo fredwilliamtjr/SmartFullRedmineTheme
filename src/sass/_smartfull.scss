@@ -17,6 +17,7 @@
   --ws-header-bg: #242428;
   --sf-header-text: #ededef;
   --sf-selection: #344b42;
+  --sf-toolbar-filter: brightness(0) invert(.93);
 }
 
 body {
@@ -36,6 +37,7 @@ body {
   --ws-header-bg: #fff;
   --sf-header-text: #252b29;
   --sf-selection: #d9eee3;
+  --sf-toolbar-filter: none;
   background: var(--ws-bg);
   color: var(--ws-text);
   letter-spacing: -.01em;
@@ -266,3 +268,61 @@ body #top-menu #ws-theme-toggle:focus-visible {
 @media (pointer: coarse) {
   body #top-menu #ws-theme-toggle { min-width: 44px; min-height: 44px; }
 }
+
+// Issue creation menu and details, including the fixed title on scroll.
+body #main-menu .menu-children {
+  background: var(--ws-bg-card);
+  border: 1px solid var(--ws-border);
+}
+body #main-menu .menu-children a {
+  color: var(--ws-text);
+  border-color: var(--ws-border);
+}
+body #main-menu .menu-children a:hover,
+body #main-menu .menu-children a:focus,
+body #main-menu > ul > li > a.new-object {
+  background: var(--sf-selection);
+  color: var(--ws-accent);
+}
+body #content div.issue .attribute .value,
+body #content div.issue table.attributes td { color: var(--ws-text); }
+body #content div.issue .attribute .label,
+body #content div.issue table.attributes th { color: var(--ws-text-secondary); }
+body #content div#sticky-issue-header {
+  background: var(--ws-bg-card);
+  color: var(--ws-text);
+  border-color: var(--ws-border);
+}
+
+// Journal headings and the selected history/editor tabs.
+body #content .journals h4.journal-header,
+body #content .journals div:target h4.journal-header {
+  background: var(--ws-bg-card);
+  color: var(--ws-text);
+  border-color: var(--ws-border);
+}
+body #content .journals h4.journal-header::before,
+body #content .journals h4.journal-header::after {
+  border-right-color: var(--ws-bg-card);
+}
+body #content .journals h4.journal-header .journal-info,
+body #content .journals h4.journal-header .update-info { color: var(--ws-text-secondary); }
+body #content div.tabs:not(#main-menu) > ul > li > a {
+  background: transparent;
+  color: var(--ws-accent);
+  border-color: var(--ws-border);
+}
+body #content div.tabs:not(#main-menu) > ul > li > a.selected {
+  background: var(--ws-bg-card);
+  color: var(--ws-text);
+  border-color: var(--ws-border);
+}
+
+// Toolbar icons are black background images, not text or SVG currentColor.
+body #content .jstElements button {
+  background-color: transparent;
+  color: var(--ws-text);
+  filter: var(--sf-toolbar-filter);
+  opacity: 1;
+}
+body #content .jstElements button:hover { opacity: .7; }
