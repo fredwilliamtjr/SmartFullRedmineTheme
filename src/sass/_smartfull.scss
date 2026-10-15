@@ -1,0 +1,268 @@
+// SmartFull: neutral graphite surfaces and accessible green accents.
+// Semantic tokens are shared by explicit and system appearance modes.
+@mixin dark-palette {
+  color-scheme: dark;
+  --ws-bg: #1c1c1e;
+  --ws-bg-secondary: #202024;
+  --ws-bg-card: #242428;
+  --ws-agile-card: #2b2b30;
+  --ws-text: #ededef;
+  --ws-text-secondary: #b4b4be;
+  --ws-border: #3a3a42;
+  --ws-accent: #79c9ae;
+  --ws-accent-hover: #a0dfc7;
+  --ws-input-bg: #2b2b30;
+  --ws-input-border: #484850;
+  --ws-top-menu-bg: #1c1c1e;
+  --ws-header-bg: #242428;
+  --sf-header-text: #ededef;
+  --sf-selection: #344b42;
+}
+
+body {
+  color-scheme: light;
+  --ws-bg: #f5f6f5;
+  --ws-bg-secondary: #eef1ef;
+  --ws-bg-card: #fff;
+  --ws-agile-card: #fff;
+  --ws-text: #252b29;
+  --ws-text-secondary: #59675f;
+  --ws-border: #d8e1dc;
+  --ws-accent: #21765a;
+  --ws-accent-hover: #15523e;
+  --ws-input-bg: #fff;
+  --ws-input-border: #c2d0c7;
+  --ws-top-menu-bg: #eef1ef;
+  --ws-header-bg: #fff;
+  --sf-header-text: #252b29;
+  --sf-selection: #d9eee3;
+  background: var(--ws-bg);
+  color: var(--ws-text);
+  letter-spacing: -.01em;
+}
+
+@media (prefers-color-scheme: dark) {
+  body:not(.theme-ws-light) { @include dark-palette; }
+}
+
+body.theme-ws-dark { @include dark-palette; }
+
+// Cover both appearance modes, including links left unstyled by the old theme.
+body a { color: var(--ws-accent); }
+body a:hover { color: var(--ws-accent-hover); }
+body #wrapper,
+body #main,
+body #content { background-color: var(--ws-bg); color: var(--ws-text); }
+
+body #top-menu { background: var(--ws-top-menu-bg); color: var(--ws-text); }
+body #top-menu a { color: var(--ws-text); }
+body #top-menu a:hover { color: var(--ws-accent); }
+body #header { background-color: var(--ws-header-bg); color: var(--sf-header-text); }
+body #header h1,
+body #header h1 a,
+body #header h1 .current-project,
+body #header #quick-search label,
+body #header #quick-search label a { color: var(--sf-header-text); }
+
+body #main-menu { background: var(--ws-bg-secondary); border-color: var(--ws-border); }
+body #main-menu > ul > li > a { color: var(--ws-text-secondary); }
+body #main-menu > ul > li > a:hover,
+body #main-menu > ul > li > a.selected {
+  color: var(--ws-accent);
+  background: transparent;
+  border-bottom-color: var(--ws-accent);
+  box-shadow: none;
+}
+
+body #sidebar { background-color: var(--ws-bg-secondary); border-color: var(--ws-border); }
+body #sidebar a { color: var(--ws-text); }
+body #sidebar a:hover { color: var(--ws-accent); }
+body #content h1,
+body #content h2,
+body #content h3,
+body #content h4,
+body #content h5,
+body #content h6 { color: var(--ws-text); }
+
+body input:not([type=submit], [type=button], [type=checkbox], [type=radio]),
+body textarea,
+body select { background-color: var(--ws-input-bg); color: var(--ws-text); border-color: var(--ws-input-border); }
+body input::placeholder,
+body textarea::placeholder { color: var(--ws-text-secondary); }
+body select option { background-color: var(--ws-input-bg); color: var(--ws-text); }
+
+body .contextual a,
+body .buttons a,
+body input[type=submit],
+body input[type=button],
+body button:not(#ws-theme-toggle) {
+  background-color: var(--ws-bg-card);
+  border-color: var(--ws-border);
+  color: var(--ws-accent);
+}
+
+body .box,
+body div.issue { background-color: var(--ws-bg-card); border-color: var(--ws-border); color: var(--ws-text); }
+body div.wiki { color: var(--ws-text); }
+body table.list th,
+body table.list .table-list-header { background-color: var(--ws-bg-secondary); color: var(--ws-text); border-color: var(--ws-border); }
+body table.list th a,
+body table.list .table-list-header a { color: var(--ws-text); }
+body #footer,
+body .author { color: var(--ws-text-secondary); border-color: var(--ws-border); }
+
+// RedmineUP styles load after the theme. Scope to #content for specificity,
+// without changing markup, dragging, card widths, or issue priority indicators.
+body #content .agile-board,
+html.agile-board-fullscreen body .agile-board { background-color: var(--ws-bg); color: var(--ws-text); }
+
+body #content .agile-board table.list.issues-board > tbody > tr,
+body #content .agile-board table.list.issues-board > tbody > tr:hover,
+body #content .agile-board table.list.issues-board > tbody > tr > td,
+body #content .agile-board table.list.issues-board > tbody > tr:hover > td,
+html.agile-board-fullscreen body .agile-board table.list.issues-board > tbody > tr > td {
+  background-color: var(--ws-bg);
+  color: var(--ws-text);
+  border-color: var(--ws-border);
+}
+
+body #content .agile-board table.list.issues-board th,
+body #content .agile-board table.list.issues-board th a {
+  background-color: var(--ws-bg-secondary);
+  color: var(--ws-text);
+  border-color: var(--ws-border);
+}
+
+body #content .agile-board .issue-card,
+body #content .agile-board td.issue-status-col.closed .issue-card,
+html.agile-board-fullscreen body .agile-board .issue-card {
+  background: var(--ws-agile-card);
+  color: var(--ws-text);
+  border-top-color: var(--ws-border);
+  border-right-color: var(--ws-border);
+  border-bottom-color: var(--ws-border);
+  border-radius: 7px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / .12);
+}
+
+body #content .agile-board .issue-card a,
+html.agile-board-fullscreen body .agile-board .issue-card a { color: var(--ws-accent); }
+body #content .agile-board .issue-card a:hover { color: var(--ws-accent-hover); }
+
+body #content .agile-board .issue-card p.project,
+html.agile-board-fullscreen body .agile-board .issue-card p.project {
+  background: var(--ws-bg-card);
+  color: var(--ws-text-secondary);
+  border-color: var(--ws-border);
+}
+
+body #content .agile-board .issue-card p.project a,
+body #content .agile-board .issue-card .attributes,
+body #content .agile-board .issue-card em.info,
+body #content .agile-board .issue-card span.hours,
+html.agile-board-fullscreen body .agile-board .issue-card .attributes {
+  color: var(--ws-text-secondary);
+}
+
+body #content .agile-board .issue-card .info,
+body #content .agile-board .issue-card .checklist,
+body #content .agile-board .issue-card .sub-issues { border-color: var(--ws-border); }
+
+body #content .agile-board .issue-card.context-menu-selection {
+  background: var(--sf-selection);
+  outline: 2px solid var(--ws-accent);
+}
+
+body #content .agile-board .issue-card.context-menu-selection p.project {
+  background: var(--sf-selection);
+  color: var(--ws-text);
+}
+
+// Project picker: custom dropdown, not a native select element.
+body #header #project-jump .drdn-trigger,
+body #header #project-jump.expanded .drdn-trigger {
+  background: var(--ws-input-bg);
+  color: var(--ws-text);
+  border-color: var(--ws-input-border);
+}
+
+body #header #project-jump .drdn-content {
+  background: var(--ws-bg-card);
+  color: var(--ws-text);
+  border: 1px solid var(--ws-border);
+  box-shadow: 0 6px 18px rgb(0 0 0 / .25);
+}
+
+body #header #project-jump .quick-search,
+body #header #project-jump .drdn-items {
+  background: var(--ws-bg-card);
+  color: var(--ws-text-secondary);
+  border-color: var(--ws-border);
+}
+
+body #header #project-jump .drdn-items a { color: var(--ws-text); }
+body #header #project-jump .drdn-items a:hover,
+body #header #project-jump .drdn-items a:focus,
+body #header #project-jump .drdn-items a.selected {
+  background: var(--sf-selection);
+  color: var(--ws-accent);
+}
+
+// Redmine 7 profile popup uses core Open Color variables absent in this theme.
+body #top-menu #account .dropdown-content {
+  background: var(--ws-bg-card);
+  color: var(--ws-text);
+  border: 1px solid var(--ws-border);
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgb(0 0 0 / .25);
+  z-index: 1100;
+  min-inline-size: 200px;
+}
+
+body #top-menu #account .dropdown-content .user-info {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+}
+
+body #top-menu #account .dropdown-content .user-login { color: var(--ws-text-secondary); }
+body #top-menu #account .dropdown-content .dropdown-divider { border-color: var(--ws-border); }
+body #top-menu #account .dropdown-content ul { display: block; }
+body #top-menu #account .dropdown-content li { float: none; margin: 0; }
+body #top-menu #account .dropdown-content a { color: var(--ws-text); }
+body #top-menu #account .dropdown-content a:hover,
+body #top-menu #account .dropdown-content a:focus {
+  background: var(--sf-selection);
+  color: var(--ws-accent);
+}
+
+// Make the appearance switch visibly interactive in both modes.
+body #top-menu #ws-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  min-height: 30px;
+  padding: 3px 8px;
+  border: 1px solid var(--ws-border);
+  border-radius: 6px;
+  background: var(--ws-bg-card);
+  color: var(--ws-accent);
+  font-size: 19px;
+  line-height: 1;
+  opacity: 1;
+}
+
+body #top-menu #ws-theme-toggle:hover {
+  background: var(--sf-selection);
+  border-color: var(--ws-accent);
+}
+
+body #top-menu #ws-theme-toggle:focus-visible {
+  outline: 2px solid var(--ws-accent);
+  outline-offset: 2px;
+}
+
+@media (pointer: coarse) {
+  body #top-menu #ws-theme-toggle { min-width: 44px; min-height: 44px; }
+}
