@@ -19,6 +19,14 @@ Tema para Redmine com paleta grafite e verde suave, modos claro e escuro e ajust
 
 A versão SmartFull foi ajustada e conferida em uma instalação de **Redmine 7.0.1**, com **RedmineUP Agile Light 1.7.0**. O WS Opale original declara suporte a Redmine 6.x; outras versões não foram homologadas nesta adaptação.
 
+### Quadro Ágil no modo escuro
+
+**Compatível visualmente com o plugin RedmineUP Agile**, responsável pelo quadro Ágil (Kanban). A adaptação inclui estilos específicos para que o quadro acompanhe os modos claro e escuro do tema, com fundo, cartões, cabeçalhos, títulos e comentários legíveis, preservando os indicadores de prioridade.
+
+Essa integração evita que os cartões mantenham fundos claros ou textos com pouco contraste quando o modo escuro está ativo. O resultado abaixo foi validado na instalação SmartFull com **RedmineUP Agile Light 1.7.0**; outras versões e a edição PRO ainda não foram homologadas.
+
+![SmartFull Redmine Theme — quadro RedmineUP Agile no modo escuro](screenshots/smartfull-dark-agile-board.png)
+
 ## Instalação
 
 1. Baixe este repositório e copie o conteúdo para `themes/smartfull` dentro da instalação do Redmine. Não copie `node_modules` nem `.git`.
