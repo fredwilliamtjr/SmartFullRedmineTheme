@@ -61,3 +61,7 @@ body.theme-ws-dark #context-menu{background-color:var(--ws-bg-card,#242428);bord
 #top-menu::after{display:none}
 #top-menu .general-menu{min-width:0}
 #top-menu .profile-menu{flex-shrink:0}
+
+/* smartfull: contraste do menu suspenso/context-menu no escuro (icon-label claro + painel destacado) */
+@media(prefers-color-scheme:dark){body:not(.theme-ws-light) .drdn-content,body:not(.theme-ws-light) #context-menu{background-color:#2d2d33;border:1px solid rgba(255,255,255,.14);box-shadow:0 8px 28px rgba(0,0,0,.55)}body:not(.theme-ws-light) .drdn-content .icon-label,body:not(.theme-ws-light) #context-menu .icon-label{color:var(--ws-text,#EDEDEF)}}
+body.theme-ws-dark .drdn-content,body.theme-ws-dark #context-menu{background-color:#2d2d33;border:1px solid rgba(255,255,255,.14);box-shadow:0 8px 28px rgba(0,0,0,.55)}body.theme-ws-dark .drdn-content .icon-label,body.theme-ws-dark #context-menu .icon-label{color:var(--ws-text,#EDEDEF)}
